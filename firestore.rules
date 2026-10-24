@@ -1,0 +1,13 @@
+rules_version = '2';
+
+// Nur das gemeinsame Familien-Konto darf lesen und schreiben.
+// Die E-Mail muss mit familyEmail in config.js übereinstimmen.
+service cloud.firestore {
+  match /databases/{database}/documents {
+    match /{col}/{id} {
+      allow read, write: if request.auth != null
+        && request.auth.token.email == "familie@fuhrpark.app"
+        && col in ["vehicles", "todos", "entries", "photos"];
+    }
+  }
+}

@@ -1,0 +1,6 @@
+# Private Daten und Testdateien nie veröffentlichen
+_test/
+Daten/
+daten/
+Fotos/
+fotos/
